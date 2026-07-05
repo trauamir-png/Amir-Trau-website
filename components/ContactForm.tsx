@@ -5,26 +5,35 @@ import { sendGTMEvent } from "@next/third-parties/google";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (!FORMSPREE_ENDPOINT) {
+      console.error("NEXT_PUBLIC_FORMSPREE_ENDPOINT is not set — contact form cannot submit");
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
 
-    const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { Accept: "application/json" },
+        body: formData,
       });
       if (!res.ok) throw new Error("failed");
       setStatus("sent");
       sendGTMEvent({ event: "form_submit", form_name: "contact" });
-      event.currentTarget.reset();
+      form.reset();
     } catch {
       setStatus("error");
     }
