@@ -7,7 +7,7 @@ import { navLinks, contactInfo } from "@/lib/nav";
 export default function Footer() {
   return (
     <footer className="mt-24 border-t border-black/5 bg-brand-surface">
-      <Container className="flex flex-col gap-10 py-14 md:flex-row md:justify-between">
+      <Container className="flex flex-col items-center gap-10 py-14 text-center md:flex-row md:items-start md:justify-between md:text-right">
         <div className="flex flex-col gap-4">
           <Image
             src="/logo-footer.png"
