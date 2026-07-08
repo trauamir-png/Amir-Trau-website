@@ -11,7 +11,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur">
+    <header className="border-b border-black/5 bg-white">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           <Image
