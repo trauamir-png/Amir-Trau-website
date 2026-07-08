@@ -47,7 +47,7 @@ export default function Footer() {
           >
             {contactInfo.email}
           </TrackedLink>
-          <div className="flex gap-4 pt-1">
+          <div className="flex justify-center gap-4 pt-1 md:justify-start">
             <a
               href={contactInfo.facebook}
               target="_blank"
