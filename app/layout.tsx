@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -64,6 +65,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieBanner />
+        <WhatsAppFloatButton />
       </body>
     </html>
   );

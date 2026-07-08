@@ -43,7 +43,7 @@ export default function ContactForm() {
     return (
       <div className="rounded-2xl bg-brand-surface p-8 text-center">
         <p className="text-lg font-semibold text-brand-ink">
-          קיבלתי! אמיר יחזור אליך בהקדם.
+          קיבלתי. אחזור אליך בהקדם.
         </p>
       </div>
     );
